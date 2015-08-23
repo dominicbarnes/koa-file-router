@@ -79,8 +79,14 @@ function sorter(a, b) {
   var len = Math.max(a1.length, b1.length);
 
   for (var x = 0; x < len; x += 1) {
-    if (a1[x] === b1[x]) continue;       // same path, try next one
-    if (a1[x].startsWith(':')) return 1; // url params always pushed back
-    return a1[x] < b1[x] ? -1 : 1;       // normal comparison
+    // same path, try next one
+    if (a1[x] === b1[x]) continue;
+
+    // url params always pushed back
+    if (a1[x] && a1[x].startsWith(':')) return 1;
+    if (b1[x] && b1[x].startsWith(':')) return -1;
+
+    // normal comparison
+    return a1[x] < b1[x] ? -1 : 1;
   }
 }

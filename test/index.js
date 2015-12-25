@@ -72,9 +72,6 @@ describe('resources(dir, [options])', function () {
  * @return {Boolean}
  */
 function hasRoute(router, url, method) {
-  if (method) {
-    return !!router.match(url, method.toUpperCase()).route;
-  } else {
-    return !!router.match(url).layers.length;
-  }
+  if (method) return !!router.match(url, method.toUpperCase()).route;
+  return !!router.match(url).layers.length;
 }

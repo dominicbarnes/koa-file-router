@@ -1,0 +1,6 @@
+{
+  "extends": "@dominicbarnes/test",
+  "rules": {
+    "mocha/no-synchronous-tests": 0
+  }
+}

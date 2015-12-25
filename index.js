@@ -1,6 +1,7 @@
 
 var debug = require('debug')('koa-file-router');
 var each = require('each-module');
+var flatten = require('array-flatten');
 var methods = require('methods');
 var path = require('path');
 var Router = require('koa-router');
@@ -58,7 +59,7 @@ function mount(router, resources) {
 
   resources.routes.forEach(function (route) {
     debug('mounting route %s %s', route.method.toUpperCase(), route.url);
-    router[route.method](route.url, route.handler);
+    router[route.method].apply(router, flatten([ route.url, route.handler ]));
   });
 
   return router;

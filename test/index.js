@@ -51,6 +51,11 @@ describe('resources(dir, [options])', function () {
     var router = resources(fixture('params'));
     assert.property(router.params, 'user');
   });
+
+  it('should include middleware fns', function () {
+    var router = resources(fixture('middleware'));
+    assert.equal(router.match('/', 'GET').route.fns.middleware.length, 2);
+  });
 });
 
 

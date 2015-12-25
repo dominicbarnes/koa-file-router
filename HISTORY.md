@@ -1,4 +1,13 @@
 
+0.1.0 / 2015-12-24
+==================
+
+  * using supertest instead of relying on koa-router internals
+  * adding travis
+  * eslint fix
+  * adding eslint
+  * supporting middleware in route handlers
+
 0.0.2 / 2015-08-22
 ==================
 

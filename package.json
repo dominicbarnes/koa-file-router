@@ -1,6 +1,6 @@
 {
   "name": "koa-file-router",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "A module that transforms a directory into a koa router",
   "main": "index.js",
   "repository": "dominicbarnes/koa-file-router",

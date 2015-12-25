@@ -1,16 +1,10 @@
 
-exports.get = function* () {
-  // noop
-};
+var methods = require('methods');
 
-exports.post = function* () {
-  // noop
-};
+methods.forEach(function (method) {
+  exports[method] = handler;
+});
 
-exports.put = function* () {
-  // noop
-};
-
-exports.delete = function* () {
-  // noop
-};
+function* handler() {
+  this.body = 'Hello World';
+}

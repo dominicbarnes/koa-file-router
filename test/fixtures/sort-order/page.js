@@ -1,4 +1,4 @@
 
 exports.get = function* () {
-  // noop
+  this.body = 'Static Page';
 };

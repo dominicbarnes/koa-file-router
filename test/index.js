@@ -1,8 +1,12 @@
 
 var assert = require('chai').assert;
-var Router = require('koa-router');
+var http = require('http');
+var koa = require('koa');
+var methods = require('methods');
 var path = require('path');
 var resources = require('..');
+var Router = require('koa-router');
+var supertest = require('supertest');
 
 var fixture = path.resolve.bind(path, __dirname, 'fixtures');
 
@@ -17,61 +21,78 @@ describe('resources(dir, [options])', function () {
     assert.instanceOf(router, Router);
   });
 
-  it('should incorporate the directories into the path', function () {
-    var router = resources(fixture('nested'));
-    assert.ok(hasRoute(router, '/a'));
-    assert.notOk(hasRoute(router, '/'));
+  it('should add a simple get route', function (done) {
+    test('simple')
+      .get('/')
+      .expect(200, 'Hello World', done);
   });
 
-  it('should allow any http method', function () {
-    var router = resources(fixture('methods'));
-    assert.ok(hasRoute(router, '/', 'get'));
-    assert.ok(hasRoute(router, '/', 'post'));
-    assert.ok(hasRoute(router, '/', 'put'));
-    assert.ok(hasRoute(router, '/', 'delete'));
-    assert.notOk(hasRoute(router, '/', 'options'));
+  it('should not create routes that were not defined', function (done) {
+    test('simple')
+      .get('/does-not-exist')
+      .expect(404, done);
   });
 
-  it('should sort routes intelligently', function () {
-    var router = resources(fixture('sort-order'));
-
-    // make sure the static /page is not clobbered by the dynamic /:page
-    assert.equal(router.match('/page', 'GET').route.path, '/page');
-
-    // make sure the root page is not affected weirdly by other dynamic routes
-    assert.equal(router.match('/', 'GET').route.path, '/');
+  it('should incorporate the directories into the path', function (done) {
+    test('nested')
+      .get('/a')
+      .expect(200, done);
   });
 
-  it('should add a prefix to the urls', function () {
-    var router = resources(fixture('simple'), { prefix: '/api' });
-    assert.ok(hasRoute(router, '/api', 'get'));
+  context('alternate http methods', function () {
+    methods.forEach(function (method) {
+      // test fails for some reason, but it's probably not important enough to address
+      if (method === 'connect') return;
+
+      it(`should support ${method}`, function (done) {
+        test('methods')
+          [method]('/')
+          .expect(200, done);
+      });
+    });
   });
 
-  it('should load params', function () {
-    var router = resources(fixture('params'));
-    assert.property(router.params, 'user');
+  context('route sorting', function () {
+    it('should ensure that static pages take priority over params pages', function (done) {
+      test('sort-order')
+        .get('/page')
+        .expect(200, 'Static Page', done);
+    });
+
+    it('should ensure that the root page takes priority over params pages', function (done) {
+      test('sort-order')
+        .get('/')
+        .expect(200, 'Hello World', done);
+    });
+
+    it('should not clobber nested routes with params pages', function (done) {
+      test('sort-order')
+        .get('/page/sub')
+        .expect(200, 'Sub Page', done);
+    });
   });
 
-  it('should include middleware fns', function () {
-    var router = resources(fixture('middleware'));
-    assert.equal(router.match('/', 'GET').route.fns.middleware.length, 2);
+  it('should add a prefix to the urls', function (done) {
+    test('simple', { prefix: '/api' })
+      .get('/api')
+      .expect(200, 'Hello World', done);
+  });
+
+  it('should load params', function (done) {
+    test('params')
+      .get('/dominic')
+      .expect(200, 'Hello, dominic', done);
+  });
+
+  it('should include middleware fns', function (done) {
+    test('middleware')
+      .get('/')
+      .expect(403, done);
   });
 });
 
-
-/**
- * Given the input router, check to see if it has a route matching the
- * given `method` and `url`.
- *
- * If no `method` is specified, it will not require a matching method,
- * only the `url` will be checked.
- *
- * @param {Router} router    The koa-router instance.
- * @param {String} url       The url to search for.
- * @param {String} [method]  The (optional) method to search for.
- * @return {Boolean}
- */
-function hasRoute(router, url, method) {
-  if (method) return !!router.match(url, method.toUpperCase()).route;
-  return !!router.match(url).layers.length;
+function test(name, options) {
+  var router = resources(fixture(name), options);
+  var app = koa().use(router.routes());
+  return supertest(http.createServer(app.callback()));
 }

@@ -27,7 +27,10 @@
     "eslint": "^1.10.3",
     "eslint-plugin-mocha": "^1.1.0",
     "eslint-plugin-require-path-exists": "^1.0.25",
-    "mocha": "^2.2.5"
+    "koa": "^1.1.2",
+    "methods": "^1.1.1",
+    "mocha": "^2.2.5",
+    "supertest": "^1.1.0"
   },
   "scripts": {
     "lint": "eslint .",

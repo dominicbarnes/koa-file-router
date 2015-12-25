@@ -1,5 +1,5 @@
 
-module.exports = function* (next) {
-  this.user = this.params.user;
+module.exports = function* (name, next) {
+  this.user = name;
   yield* next;
 };

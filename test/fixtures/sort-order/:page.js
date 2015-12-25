@@ -1,4 +1,4 @@
 
 exports.get = function* () {
-  // noop
+  this.body = `Page: ${this.params.page}`;
 };

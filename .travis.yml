@@ -1,0 +1,17 @@
+sudo: false
+language: node_js
+node_js:
+- stable
+- 4
+install: npm update
+cache:
+  directories:
+  - node_modules
+deploy:
+  provider: npm
+  email: dominic@dbarnes.info
+  api_key:
+    secure: bc18iAAbrxOLdO8I2RlpmyXakMSDhmPXF2bLJEgnoGYWEZMrrifmCYWyon/zCOxIYC04HRwl/UelnM0g6ydUqhWYNCZbJmF/T9m1D/+nc89OEk8C8r4Yj4WZ1OUuGHPpSEVFB3elLzdpgV5z8Vo15zsQWjqZaEphqiERmShcnqfxVdyyTf37kXel9StRpq2Z24EGoqRywKMdMMY6gxK0hLRM6lh3Zc7xwplUXhB2AMUNXaSL/9bFTSPks2QpYfNzb9mHjULh8SHjfZbx/ReAxtOOenW70pE3qch5cigRIWTznJXlbhSveNDFjwcw0Bg8aLReKeJtUKPG8OTkWPGtgJA3QV07kXjWnzHLrLSdZcnQ6SIviJjKx52eUJbCEg7UYgQJdRvkTMNI8iJUzCRNMjLQBBtTzJACX3bzqV+zSrMgLoUbfK3X3Uh0mxZgFsE8cYRVenRkY+xiayFNyqz6XnVR4Xm/jTWTAvde6owfkOq9pl/hhw1bg//q7f2vSJI1acbbLVhuJMK/84TeMGZ1RxBxpcPViQCNmDsPgbtLa+yho7mGQqvwANXiMMWbwdxhInOSQlAYg0g4gv5oWWC8w08LX7znm5aryx6fYHG2Js260r47EoKEs7GiTbkC5UB3WdokBPHnuW/6E40p5r4++a7nnvzT5X9ApuIpoKAdfF0=
+  on:
+    tags: true
+    repo: dominicbarnes/koa-file-router

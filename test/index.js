@@ -89,10 +89,17 @@ describe('resources(dir, [options])', function () {
       .get('/')
       .expect(403, done);
   });
+
+  it('should support adding named routes', function (done) {
+    test('named-routes')
+      .get('/')
+      .expect(200, 'Named Route: /login', done);
+  });
 });
 
 function test(name, options) {
   var router = resources(fixture(name), options);
   var app = koa().use(router.routes());
+  app.context.router = router; // HACK
   return supertest(http.createServer(app.callback()));
 }

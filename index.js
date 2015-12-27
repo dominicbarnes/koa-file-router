@@ -37,6 +37,7 @@ function discover(dir) {
           var url = path2url(id);
           debug('found route %s %s in %s', method.toUpperCase(), url, file);
           resources.routes.push({
+            name: resource.name,
             url: url,
             method: method,
             handler: resource[method]
@@ -59,7 +60,9 @@ function mount(router, resources) {
 
   resources.routes.forEach(function (route) {
     debug('mounting route %s %s', route.method.toUpperCase(), route.url);
-    router[route.method].apply(router, flatten([ route.url, route.handler ]));
+    var args = flatten([ route.url, route.handler ]);
+    if (route.method === 'get' && route.name) args.unshift(route.name);
+    router[route.method].apply(router, args);
   });
 
   return router;

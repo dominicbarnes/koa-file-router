@@ -3,6 +3,11 @@
 > Generates a [koa-router](https://github.com/alexmingoia/koa-router) instance
 > from a directory of files, allowing the path to determine the resulting url.
 
+[![npm version](https://img.shields.io/npm/v/koa-file-router.svg)](https://www.npmjs.com/package/koa-file-router)
+[![npm dependencies](https://img.shields.io/david/dominicbarnes/koa-file-router.svg)](https://david-dm.org/dominicbarnes/koa-file-router)
+[![npm dev dependencies](https://img.shields.io/david/dev/dominicbarnes/koa-file-router.svg)](https://david-dm.org/dominicbarnes/koa-file-router#info=devDependencies)
+[![build status](https://img.shields.io/travis/dominicbarnes/koa-file-router.svg)](https://travis-ci.org/dominicbarnes/koa-file-router)
+
 ## Usage
 
 I took a lot of concepts from a [similar project](https://github.com/dominicbarnes/express-resourceful)

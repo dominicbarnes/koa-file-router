@@ -40,11 +40,17 @@ describe('resources(dir, [options])', function () {
   });
 
   context('alternate http methods', function () {
+    it('should support "all" routes', function (done) {
+      test('all-route')
+        .get('/')
+        .expect(200, 'Hello World', done);
+    });
+
     methods.forEach(function (method) {
       // test fails for some reason, but it's probably not important enough to address
       if (method === 'connect') return;
 
-      it(`should support ${method}`, function (done) {
+      it(`should support "${method}" routes`, function (done) {
         test('methods')
           [method]('/')
           .expect(200, done);

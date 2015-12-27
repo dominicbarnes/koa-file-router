@@ -32,7 +32,7 @@ function discover(dir) {
         handler: resource
       });
     } else {
-      methods.forEach(function (method) {
+      methods.concat('all').forEach(function (method) {
         if (method in resource) {
           var url = path2url(id);
           debug('found route %s %s in %s', method.toUpperCase(), url, file);

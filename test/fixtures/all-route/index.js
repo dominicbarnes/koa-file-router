@@ -1,4 +1,3 @@
-
-exports.all = function* () {
-  this.body = 'Hello World';
+exports.all = ctx => {
+  ctx.body = "Hello World";
 };

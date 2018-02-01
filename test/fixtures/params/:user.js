@@ -1,4 +1,3 @@
-
-exports.get = function* () {
-  this.body = `Hello, ${this.user}`;
+exports.get = ctx => {
+  ctx.body = `Hello, ${ctx.state.user}`;
 };

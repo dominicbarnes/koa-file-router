@@ -1,4 +1,3 @@
-
-exports.get = function* () {
-  this.body = `Page: ${this.params.page}`;
+exports.get = ctx => {
+  ctx.body = `Page: ${ctx.params.page}`;
 };

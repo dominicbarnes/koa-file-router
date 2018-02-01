@@ -1,4 +1,3 @@
-
-exports.get = function* () {
-  this.body = 'Hello World';
+exports.get = ctx => {
+  ctx.body = "Hello World";
 };

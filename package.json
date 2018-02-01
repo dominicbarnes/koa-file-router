@@ -11,30 +11,34 @@
     "path"
   ],
   "author": "Dominic Barnes <dominic@dbarnes.info>",
+  "contributors": [
+    "Daryl Roberts <daryl.roberts@gmail.com>"
+  ],
   "license": "MIT",
   "dependencies": {
     "array-flatten": "^2.0.0",
     "debug": "^2.2.0",
     "each-module": "^1.2.0",
-    "koa-router": "^7.4.0",
     "methods": "^1.1.1"
   },
   "devDependencies": {
-    "@dominicbarnes/eslint-config": "*",
-    "@dominicbarnes/eslint-config-node": "*",
-    "@dominicbarnes/eslint-config-test": "*",
     "chai": "^3.2.0",
     "eslint": "^1.10.3",
     "eslint-plugin-mocha": "^1.1.0",
     "eslint-plugin-require-path-exists": "^1.0.25",
-    "koa": "^1.1.2",
+    "koa": "^2.0.0",
+    "koa-router": "^7.0.0",
     "methods": "^1.1.1",
     "mocha": "^2.2.5",
-    "supertest": "^1.1.0"
+    "supertest": "^3.0.0"
+  },
+  "peerDependencies": {
+    "koa": "^2.0.0",
+    "koa-router": "^7.0.0"
   },
   "scripts": {
     "lint": "eslint .",
-    "pretest": "npm run lint",
+    "preteest": "npm run lint",
     "test": "mocha"
   }
 }

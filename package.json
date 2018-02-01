@@ -1,20 +1,16 @@
 {
   "name": "koa-file-router",
-  "version": "0.3.0",
+  "version": "1.0.0",
   "description": "A module that transforms a directory into a koa router",
   "main": "index.js",
   "repository": "dominicbarnes/koa-file-router",
-  "keywords": [
-    "koa",
-    "router",
-    "file",
-    "path"
-  ],
+  "keywords": ["koa", "router", "file", "path"],
   "author": "Dominic Barnes <dominic@dbarnes.info>",
-  "contributors": [
-    "Daryl Roberts <daryl.roberts@gmail.com>"
-  ],
+  "contributors": ["Daryl Roberts <daryl.roberts@gmail.com>"],
   "license": "MIT",
+  "engines": {
+    "node": ">=8.9.0"
+  },
   "dependencies": {
     "array-flatten": "^2.0.0",
     "debug": "^3.1.0",

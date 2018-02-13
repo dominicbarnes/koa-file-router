@@ -1,4 +1,3 @@
-
-exports.get = function* () {
-  this.body = 'Sub Page';
+exports.get = ctx => {
+  ctx.body = "Sub Page";
 };

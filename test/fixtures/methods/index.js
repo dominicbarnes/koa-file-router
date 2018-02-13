@@ -1,10 +1,9 @@
+const methods = require("methods");
 
-var methods = require('methods');
+const handler = ctx => {
+  ctx.body = "Hello World";
+};
 
-methods.forEach(function (method) {
+methods.forEach(function(method) {
   exports[method] = handler;
 });
-
-function* handler() {
-  this.body = 'Hello World';
-}

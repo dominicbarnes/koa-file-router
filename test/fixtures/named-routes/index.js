@@ -1,4 +1,3 @@
-
-exports.get = function* () {
-  this.body = `Named Route: ${this.router.url('login')}`;
+exports.get = ctx => {
+  ctx.body = `Named Route: ${ctx.router.url("login")}`;
 };

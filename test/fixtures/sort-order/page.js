@@ -1,4 +1,3 @@
-
-exports.get = function* () {
-  this.body = 'Static Page';
+exports.get = ctx => {
+  ctx.body = "Static Page";
 };

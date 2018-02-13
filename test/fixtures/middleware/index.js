@@ -1,9 +1,8 @@
-
 exports.get = [
-  function* () {
-    this.throw(403);
+  ctx => {
+    ctx.throw(403);
   },
-  function* () {
-    this.body = 'Hello World';
+  ctx => {
+    ctx.body = "Hello World";
   }
 ];

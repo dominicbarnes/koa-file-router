@@ -1,5 +1,4 @@
-
-module.exports = function* (name, next) {
-  this.user = name;
-  yield* next;
+module.exports = (name, ctx, next) => {
+  ctx.state.user = name;
+  return next();
 };

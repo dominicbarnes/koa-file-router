@@ -4,7 +4,6 @@ node_js:
   - 6
   - 8
   - 9
-install: npm update
 cache:
   directories:
     - node_modules

@@ -13,6 +13,9 @@
 I took a lot of concepts from a [similar project](https://github.com/dominicbarnes/express-resourceful)
 I worked on previously.
 
+**NOTE:** version `1.x` is written for `koa@2+`. If you need support for `koa@1`
+or below,  then use `v0.x`.
+
 ### Server
 
 ```js

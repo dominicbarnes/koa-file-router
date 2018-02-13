@@ -1,3 +1,3 @@
 exports.get = ctx => {
-  ctx.body = `Page: ${ctx.params.page}`;
-};
+  ctx.body = `Page: ${ctx.params.page}`
+}

@@ -1,3 +1,3 @@
 exports.all = ctx => {
-  ctx.body = "Hello World";
-};
+  ctx.body = 'Hello World'
+}

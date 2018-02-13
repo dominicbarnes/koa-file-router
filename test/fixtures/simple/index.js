@@ -1,3 +1,3 @@
 exports.get = ctx => {
-  ctx.body = "Hello World";
-};
+  ctx.body = 'Hello World'
+}

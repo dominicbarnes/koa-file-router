@@ -1,3 +1,3 @@
 exports.get = ctx => {
-  ctx.body = "Sub Page";
-};
+  ctx.body = 'Sub Page'
+}

@@ -1,3 +1,3 @@
 exports.get = ctx => {
-  ctx.body = "Static Page";
-};
+  ctx.body = 'Static Page'
+}

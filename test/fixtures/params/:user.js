@@ -1,3 +1,3 @@
 exports.get = ctx => {
-  ctx.body = `Hello, ${ctx.state.user}`;
-};
+  ctx.body = `Hello, ${ctx.state.user}`
+}
